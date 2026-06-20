@@ -23,4 +23,6 @@ export default function Home() {
       }}>
         IELTS tayyorgarligi platformasi
       </p>
-    <
+    </div>
+    )
+}
