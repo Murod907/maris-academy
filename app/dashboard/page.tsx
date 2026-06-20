@@ -81,7 +81,7 @@ export default function Dashboard() {
       <div style={{ padding: '12px 20px 0' }}>
         <div style={{ background: '#fff', borderRadius: 20, padding: '20px', boxShadow: '0 4px 16px rgba(0,0,0,0.06)' }}>
           <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 12 }}>🗺️ Roadmap</div>
-[20.06.2026 20:07] Murod: {[
+          {[
             { title: 'Grammar Basics', done: true },
             { title: 'Reading Skills', done: true },
             { title: 'Listening Practice', active: true },
