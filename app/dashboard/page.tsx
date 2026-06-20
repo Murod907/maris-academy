@@ -1,5 +1,4 @@
-background: item.done ? '#000' : item.active ? '#F5C300' : '#E5E7EB',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
+display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontWeight: 800, fontSize: 14,
                 color: item.done ? '#F5C300' : item.active ? '#000' : '#999',
                 flexShrink: 0,
@@ -20,7 +19,6 @@ background: item.done ? '#000' : item.active ? '#F5C300' : '#E5E7EB',
         </div>
       </div>
 
-      {/* Bottom Nav */}
       <div style={{
         position: 'fixed', bottom: 0, left: 0, right: 0,
         background: '#fff',
