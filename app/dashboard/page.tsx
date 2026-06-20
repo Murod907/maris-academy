@@ -1,4 +1,4 @@
-[20.06.2026 20:07] Murod: 'use client'
+'use client'
 import { useEffect, useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
 
