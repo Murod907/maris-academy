@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main style={{
       minHeight: '100vh',
-      background: '#FF700',
+      background: '#FFF176',
       fontFamily: 'sans-serif',
     }}>
       {/* Header */}
