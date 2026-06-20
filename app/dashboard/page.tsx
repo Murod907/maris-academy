@@ -49,7 +49,7 @@ export default function Dashboard() {
           <div style={{ fontSize: 13, color: '#999' }}>Xush kelibsiz!</div>
           <div style={{ fontSize: 22, fontWeight: 900 }}>👋 Hi, {user.email?.split('@')[0]}!</div>
         </div>
-        <div style={{ fontSize: 72 }}>🐻</div>
+        <div style={{ fontSize: 72 }}><imgsrc="/polar.jpg/></div>
       </div>
 
       {/* Last Test Result */}
