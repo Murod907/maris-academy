@@ -38,8 +38,22 @@ export default function Dashboard() {
 
       {/* Header */}
       <div style={{ background: '#fff', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
-        <img src="/logo.jpg" alt="Maris Academy" style={{ height: 40, objectFit: 'contain' }} />
-        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{
+            width: 42, height: 42,
+            background: '#F5C300',
+            borderRadius: 10,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontWeight: 900, fontSize: 24, color: '#000',
+            fontStyle: 'italic',
+            boxShadow: '2px 2px 0px #000',
+          }}>M</div>
+          <div>
+            <div style={{ fontWeight: 900, fontSize: 18, letterSpacing: 3, color: '#000', lineHeight: 1 }}>MARIS</div>
+            <div style={{ fontWeight: 700, fontSize: 9, letterSpacing: 4, color: '#F5C300', textTransform: 'uppercase' }}>Academy</div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           <span style={{ fontSize: 22, cursor: 'pointer' }}>🔔</span>
           <span style={{ fontSize: 22, cursor: 'pointer' }}>🌙</span>
           <div
@@ -50,91 +64,112 @@ export default function Dashboard() {
       </div>
 
       {/* Greeting */}
-      <div style={{ padding: '16px 16px 0', display: 'flex', alignItems: 'center', gap: 8 }}>
+      <div style={{ padding: '20px 16px 0', display: 'flex', alignItems: 'center', gap: 8 }}>
         <span style={{ fontSize: 28 }}>👋</span>
-        <span style={{ fontSize: 20, fontWeight: 800 }}>Hi {user.email?.split('@')[0]}</span>
+        <span style={{ fontSize: 22, fontWeight: 900, color: '#000' }}>Hi {user.email?.split('@')[0]}</span>
       </div>
 
       {/* Exam Date Card */}
-      <div style={{ margin: '16px 16px 12px', background: 'linear-gradient(135deg, #F5C300, #FFD54F)', borderRadius: 20, padding: '20px', position: 'relative', minHeight: 110 }}>
-        <div style={{ fontSize: 32, marginBottom: 8 }}>📅</div>
+      <div style={{ margin: '16px 16px 12px', background: 'linear-gradient(135deg, #F5C300 0%, #FFE066 100%)', borderRadius: 24, padding: '24px 20px', position: 'relative', minHeight: 120, boxShadow: '0 4px 16px rgba(245,195,0,0.3)' }}>
+        <div style={{ fontSize: 36, marginBottom: 8 }}>📅</div>
         {examDate ? (
-          <div style={{ fontSize: 18, fontWeight: 700, color: '#000' }}>
+          <div style={{ fontSize: 20, fontWeight: 800, color: '#000' }}>
             {new Date(examDate).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
           </div>
         ) : (
-          <div style={{ fontSize: 16, fontWeight: 700, color: '#000', cursor: 'pointer' }} onClick={() => setEditDate(true)}>
+          <div style={{ fontSize: 17, fontWeight: 700, color: '#000', cursor: 'pointer' }} onClick={() => setEditDate(true)}>
             + Set Exam Date →
           </div>
         )}
         {editDate && (
-          <div style={{ marginTop: 8, display: 'flex', gap: 8 }}>
+          <div style={{ marginTop: 10, display: 'flex', gap: 8 }}>
             <input
               type="date"
-              value={examDate}
+value={examDate}
               onChange={e => setExamDate(e.target.value)}
-              style={{ padding: '8px', borderRadius: 8, border: 'none', fontSize: 14, flex: 1 }}
+              style={{ padding: '10px', borderRadius: 10, border: 'none', fontSize: 15, flex: 1, fontWeight: 600 }}
             />
-            <button onClick={() => setEditDate(false)} style={{ padding: '8px 16px', background: '#000', color: '#F5C300', border: 'none', borderRadius: 8, fontWeight: 700, cursor: 'pointer' }}>✓</button>
+            <button onClick={() => setEditDate(false)} style={{ padding: '10px 18px', background: '#000', color: '#F5C300', border: 'none', borderRadius: 10, fontWeight: 800, cursor: 'pointer', fontSize: 16 }}>✓</button>
           </div>
         )}
         <button
           onClick={() => setEditDate(true)}
-          style={{ position: 'absolute', right: 16, bottom: 16, width: 40, height: 40, background: 'rgba(0,0,0,0.15)', borderRadius: '50%', border: 'none', fontSize: 16, cursor: 'pointer' }}
+          style={{ position: 'absolute', right: 16, bottom: 16, width: 42, height: 42, background: 'rgba(0,0,0,0.12)', borderRadius: '50%', border: 'none', fontSize: 18, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
         >✏️</button>
       </div>
- {/* My Goal Score */}
-      <div style={{ margin: '0 16px 12px', background: '#fff', borderRadius: 20, padding: '20px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+
+      {/* My Goal Score */}
+      <div style={{ margin: '0 16px 12px', background: '#fff', borderRadius: 24, padding: '20px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 13, color: '#999', fontWeight: 600, marginBottom: 4 }}>My Goal Score</div>
-          <button onClick={() => setEditScore(true)} style={{ width: 36, height: 36, background: '#f0f0f0', borderRadius: '50%', border: 'none', fontSize: 16, cursor: 'pointer', marginBottom: 8 }}>✏️</button>
+          <div style={{ fontSize: 13, color: '#999', fontWeight: 600, marginBottom: 6 }}>My Goal Score</div>
+          <button onClick={() => setEditScore(true)} style={{ width: 34, height: 34, background: '#f0f0f0', borderRadius: '50%', border: 'none', fontSize: 15, cursor: 'pointer', marginBottom: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✏️</button>
           {editScore ? (
             <div>
-              <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
-                <button onClick={() => setScoreType('IELTS')} style={{ padding: '6px 14px', background: scoreType === 'IELTS' ? '#000' : '#f0f0f0', color: scoreType === 'IELTS' ? '#F5C300' : '#000', border: 'none', borderRadius: 8, fontWeight: 700, cursor: 'pointer', fontSize: 13 }}>IELTS</button>
-                <button onClick={() => setScoreType('CEFR')} style={{ padding: '6px 14px', background: scoreType === 'CEFR' ? '#000' : '#f0f0f0', color: scoreType === 'CEFR' ? '#F5C300' : '#000', border: 'none', borderRadius: 8, fontWeight: 700, cursor: 'pointer', fontSize: 13 }}>CEFR</button>
+              <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
+                <button onClick={() => setScoreType('IELTS')} style={{ padding: '6px 16px', background: scoreType === 'IELTS' ? '#000' : '#f0f0f0', color: scoreType === 'IELTS' ? '#F5C300' : '#000', border: 'none', borderRadius: 10, fontWeight: 700, cursor: 'pointer', fontSize: 13 }}>IELTS</button>
+                <button onClick={() => setScoreType('CEFR')} style={{ padding: '6px 16px', background: scoreType === 'CEFR' ? '#000' : '#f0f0f0', color: scoreType === 'CEFR' ? '#F5C300' : '#000', border: 'none', borderRadius: 10, fontWeight: 700, cursor: 'pointer', fontSize: 13 }}>CEFR</button>
               </div>
               <select
                 value={goalScore}
                 onChange={e => setGoalScore(e.target.value)}
-                style={{ padding: '8px', borderRadius: 8, border: '2px solid #000', fontSize: 18, fontWeight: 700, width: '100%', marginBottom: 8 }}
+                style={{ padding: '10px', borderRadius: 10, border: '2px solid #000', fontSize: 18, fontWeight: 700, width: '100%', marginBottom: 10 }}
               >
                 {scoreType === 'IELTS'
                   ? ['1.0','1.5','2.0','2.5','3.0','3.5','4.0','4.5','5.0','5.5','6.0','6.5','7.0','7.5','8.0','8.5','9.0'].map(s => <option key={s} value={s}>{s}</option>)
                   : ['51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75'].map(s => <option key={s} value={s}>{s}</option>)
                 }
               </select>
-              <button onClick={() => setEditScore(false)} style={{ width: '100%', padding: '10px', background: '#000', color: '#F5C300', border: 'none', borderRadius: 8, fontWeight: 700, cursor: 'pointer' }}>
+              <button onClick={() => setEditScore(false)} style={{ width: '100%', padding: '12px', background: '#000', color: '#F5C300', border: 'none', borderRadius: 10, fontWeight: 800, cursor: 'pointer', fontSize: 15 }}>
                 Saqlash ✓
               </button>
             </div>
           ) : (
-            <div style={{ fontSize: 52, fontWeight: 900, color: '#F5C300', lineHeight: 1 }}>{goalScore}</div>
+            <div style={{ fontSize: 56, fontWeight: 900, color: '#F5C300', lineHeight: 1 }}>{goalScore}</div>
           )}
-          <div style={{ fontSize: 12, color: '#999', marginTop: 4 }}>{scoreType}</div>
+          <div style={{ fontSize: 12, color: '#999', marginTop: 6, fontWeight: 600 }}>{scoreType}</div>
         </div>
-        <img src="/POLAR.jpg" alt="bear" style={{ width: 130, height: 130, objectFit: 'contain' }} />
+        {/* SVG Polar Bear */}
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="60" cy="95" rx="28" ry="18" fill="#e8e8e8"/>
+          <ellipse cx="60" cy="75" rx="26" ry="28" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
+<ellipse cx="38" cy="58" rx="10" ry="12" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
+          <ellipse cx="82" cy="58" rx="10" ry="12" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
+          <ellipse cx="60" cy="52" rx="20" ry="22" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
+          <ellipse cx="50" cy="42" rx="10" ry="10" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
+          <ellipse cx="70" cy="42" rx="10" ry="10" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
+          <ellipse cx="60" cy="58" rx="10" ry="8" fill="#f0f0f0"/>
+          <ellipse cx="55" cy="50" rx="3" ry="3" fill="#222"/>
+          <ellipse cx="65" cy="50" rx="3" ry="3" fill="#222"/>
+          <ellipse cx="60" cy="56" rx="4" ry="3" fill="#d4a0a0"/>
+          <path d="M55 60 Q60 64 65 60" stroke="#333" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+          <ellipse cx="38" cy="92" rx="10" ry="6" fill="#e8e8e8"/>
+          <ellipse cx="82" cy="92" rx="10" ry="6" fill="#e8e8e8"/>
+          {/* Yellow shirt */}
+          <ellipse cx="60" cy="88" rx="20" ry="12" fill="#F5C300"/>
+          <rect x="42" y="80" width="36" height="16" rx="8" fill="#F5C300"/>
+        </svg>
       </div>
 
       {/* Competitions */}
-      <div style={{ margin: '0 16px 12px', background: '#fff', borderRadius: 20, padding: '20px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => window.location.href = '/assessment'}>
+      <div style={{ margin: '0 16px 12px', background: '#fff', borderRadius: 24, padding: '20px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => window.location.href = '/assessment'}>
         <div>
-          <div style={{ fontSize: 15, fontWeight: 700 }}>Competitions</div>
+          <div style={{ fontSize: 16, fontWeight: 800, color: '#000' }}>Competitions</div>
           <div style={{ fontSize: 13, color: '#999', marginTop: 4 }}>Musobaqalarga kirish →</div>
         </div>
-        <span style={{ fontSize: 64 }}>🏆</span>
+        <span style={{ fontSize: 56 }}>🏆</span>
       </div>
 
       {/* Roadmap */}
-      <div style={{ margin: '0 16px 12px', background: '#fff', borderRadius: 20, padding: '20px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => window.location.href = '/roadmap'}>
+      <div style={{ margin: '0 16px 12px', background: '#fff', borderRadius: 24, padding: '20px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => window.location.href = '/roadmap'}>
         <div>
-          <div style={{ fontSize: 15, fontWeight: 700 }}>Roadmap</div>
+          <div style={{ fontSize: 16, fontWeight: 800, color: '#000' }}>Roadmap</div>
           <div style={{ fontSize: 13, color: '#999', marginTop: 4 }}>Darslaringizni ko'rish →</div>
         </div>
-        <span style={{ fontSize: 64 }}>🗺️</span>
+        <span style={{ fontSize: 56 }}>🗺️</span>
       </div>
- {/* Bottom Nav */}
-      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: '#fff', borderTop: '1px solid #f0f0f0', display: 'flex', padding: '8px 0' }}>
+
+      {/* Bottom Nav */}
+      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: '#fff', borderTop: '1px solid #f0f0f0', display: 'flex', padding: '10px 0' }}>
         {[
           { icon: '⊞', label: 'Home', href: '/dashboard', active: true },
           { icon: '📋', label: 'Assessment', href: '/assessment', active: false },
@@ -142,8 +177,8 @@ export default function Dashboard() {
           { icon: '•••', label: 'More', href: '/more', active: false },
         ].map((item, i) => (
           <div key={i} onClick={() => window.location.href = item.href} style={{ flex: 1, textAlign: 'center', cursor: 'pointer', padding: '4px 0' }}>
-            <div style={{ fontSize: 20, color: item.active ? '#F5C300' : '#999' }}>{item.icon}</div>
-            <div style={{ fontSize: 10, fontWeight: 700, color: item.active ? '#F5C300' : '#999' }}>{item.label}</div>
+            <div style={{ fontSize: 22, color: item.active ? '#F5C300' : '#bbb' }}>{item.icon}</div>
+            <div style={{ fontSize: 10, fontWeight: 700, color: item.active ? '#F5C300' : '#bbb' }}>{item.label}</div>
           </div>
         ))}
       </div>
