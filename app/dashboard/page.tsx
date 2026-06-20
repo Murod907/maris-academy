@@ -75,9 +75,7 @@ export default function Dashboard() {
               onChange={e => setExamDate(e.target.value)}
               style={{ padding: '8px', borderRadius: 8, border: 'none', fontSize: 14, flex: 1 }}
             />
-            <button onClick={() => setEditDate(false)} style={{ padding: '8px 16px', background: '#000', color: '#F5C300', border: 'none', borderRadius: 8, fontWeight: 700, cursor: 'pointer' }}>
-              ✓
-            </button>
+            <button onClick={() => setEditDate(false)} style={{ padding: '8px 16px', background: '#000', color: '#F5C300', border: 'none', borderRadius: 8, fontWeight: 700, cursor: 'pointer' }}>✓</button>
           </div>
         )}
         <button
@@ -115,7 +113,7 @@ export default function Dashboard() {
           )}
           <div style={{ fontSize: 12, color: '#999', marginTop: 4 }}>{scoreType}</div>
         </div>
-        <img src="/polar.jpg" alt="bear" style={{ width: 130, height: 130, objectFit: 'contain' }} />
+        <img src="/POLAR.jpg" alt="bear" style={{ width: 130, height: 130, objectFit: 'contain' }} />
       </div>
 
       {/* Competitions */}
@@ -127,15 +125,22 @@ export default function Dashboard() {
         <span style={{ fontSize: 64 }}>🏆</span>
       </div>
 
-      {/* Bottom Nav */}
+      {/* Roadmap */}
+      <div style={{ margin: '0 16px 12px', background: '#fff', borderRadius: 20, padding: '20px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => window.location.href = '/roadmap'}>
+        <div>
+          <div style={{ fontSize: 15, fontWeight: 700 }}>Roadmap</div>
+          <div style={{ fontSize: 13, color: '#999', marginTop: 4 }}>Darslaringizni ko'rish →</div>
+        </div>
+        <span style={{ fontSize: 64 }}>🗺️</span>
+      </div>
+ {/* Bottom Nav */}
       <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: '#fff', borderTop: '1px solid #f0f0f0', display: 'flex', padding: '8px 0' }}>
         {[
           { icon: '⊞', label: 'Home', href: '/dashboard', active: true },
           { icon: '📋', label: 'Assessment', href: '/assessment', active: false },
           { icon: '⊹', label: 'Roadmaps', href: '/roadmap', active: false },
-          { icon: '📅', label: 'Bookings', href: '/bookings', active: false },
           { icon: '•••', label: 'More', href: '/more', active: false },
- ].map((item, i) => (
+        ].map((item, i) => (
           <div key={i} onClick={() => window.location.href = item.href} style={{ flex: 1, textAlign: 'center', cursor: 'pointer', padding: '4px 0' }}>
             <div style={{ fontSize: 20, color: item.active ? '#F5C300' : '#999' }}>{item.icon}</div>
             <div style={{ fontSize: 10, fontWeight: 700, color: item.active ? '#F5C300' : '#999' }}>{item.label}</div>
