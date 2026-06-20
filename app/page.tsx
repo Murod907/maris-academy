@@ -2,13 +2,13 @@
 import { useState } from 'react'
 
 export default function Home() {
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   return (
     <main style={{
       minHeight: '100vh',
-      background: '#0B1F3A',
+      background: 'linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -17,44 +17,63 @@ export default function Home() {
     }}>
       <div style={{
         background: 'white',
-        borderRadius: '20px',
+        borderRadius: '24px',
         padding: '40px',
         width: '100%',
-        maxWidth: '400px',
-        boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
+        maxWidth: '380px',
+        boxShadow: '0 20px 60px rgba(0,0,0,0.12)',
+        textAlign: 'center',
       }}>
-        <h1 style={{
-          color: '#0B1F3A',
-          fontSize: '28px',
+        {/* Logo */}
+        <div style={{
+          width: '80px',
+          height: '80px',
+          background: '#F5C300',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '0 auto 16px',
+          fontSize: '36px',
           fontWeight: 900,
-          textAlign: 'center',
-          marginBottom: '4px',
+          color: '#000',
         }}>
-          Maris Academy
+          M
+        </div>
+
+        <h1 style={{
+          color: '#000000',
+          fontSize: '26px',
+          fontWeight: 900,
+          marginBottom: '4px',
+          letterSpacing: '2px',
+        }}>
+          MARIS
         </h1>
         <p style={{
-          color: '#C9922A',
-          textAlign: 'center',
+          color: '#666',
+          fontSize: '13px',
+          letterSpacing: '3px',
           marginBottom: '32px',
-          fontSize: '14px',
         }}>
-          IELTS tayyorgarligi platformasi
+          ACADEMY
         </p>
 
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
           style={{
             width: '100%',
-            padding: '14px',
-            borderRadius: '10px',
+            padding: '14px 16px',
+            borderRadius: '12px',
             border: '2px solid #E5E7EB',
             fontSize: '15px',
             marginBottom: '12px',
             boxSizing: 'border-box',
             outline: 'none',
+            textAlign: 'left',
           }}
         />
 
@@ -65,29 +84,39 @@ export default function Home() {
           onChange={e => setPassword(e.target.value)}
           style={{
             width: '100%',
-            padding: '14px',
-            borderRadius: '10px',
+            padding: '14px 16px',
+            borderRadius: '12px',
             border: '2px solid #E5E7EB',
             fontSize: '15px',
-            marginBottom: '20px',
+            marginBottom: '24px',
             boxSizing: 'border-box',
             outline: 'none',
+            textAlign: 'left',
           }}
         />
 
         <button style={{
           width: '100%',
-          padding: '14px',
-          background: '#C9922A',
-          color: 'white',
+          padding: '15px',
+          background: '#F5C300',
+          color: '#000',
           border: 'none',
-          borderRadius: '10px',
+          borderRadius: '12px',
           fontSize: '16px',
-          fontWeight: 700,
+          fontWeight: 800,
           cursor: 'pointer',
+          letterSpacing: '1px',
         }}>
-          Kirish
+          KIRISH
         </button>
+
+        <p style={{
+          color: '#999',
+          fontSize: '12px',
+          marginTop: '24px',
+        }}>
+          IELTS tayyorgarligi platformasi
+        </p>
       </div>
     </main>
   )
