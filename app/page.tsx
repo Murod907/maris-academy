@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div style={{
+    <main style={{
       minHeight: '100vh',
       background: '#0B1F3A',
       display: 'flex',
@@ -8,6 +8,8 @@ export default function Home() {
       justifyContent: 'center',
       flexDirection: 'column',
       fontFamily: 'sans-serif',
+      margin: 0,
+      padding: 0,
     }}>
       <h1 style={{
         color: '#C9922A',
@@ -23,6 +25,6 @@ export default function Home() {
       }}>
         IELTS tayyorgarligi platformasi
       </p>
-    </div>
-    )
+    </main>
+  )
 }
