@@ -1,5 +1,11 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  'https://vzfogwsijmxzdaupzkfb.supabase.co',
+  'sb_publishable_uOTGX4QdfpOUtdalDef-pQ_BO1ThYxs'
+)
 
 export default function Dashboard() {
   const [user, setUser] = useState<any>(null)
@@ -11,11 +17,6 @@ export default function Dashboard() {
 
   useEffect(() => {
     const checkUser = async () => {
-      const { createClient } = await import('@supabase/supabase-js')
-      const supabase = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-      )
       const { data } = await supabase.auth.getUser()
       if (!data.user) {
         window.location.href = '/'
@@ -35,7 +36,6 @@ export default function Dashboard() {
   return (
     <main style={{ minHeight: '100vh', background: '#f5f5f5', fontFamily: 'sans-serif', paddingBottom: 80 }}>
 
-      {/* Header */}
       <div style={{ background: '#fff', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <div style={{ width: 42, height: 42, background: '#F5C300', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 24, color: '#000', fontStyle: 'italic', boxShadow: '2px 2px 0px #000' }}>M</div>
@@ -49,8 +49,6 @@ export default function Dashboard() {
           <span style={{ fontSize: 22 }}>🌙</span>
           <div
             onClick={async () => {
-              const { createClient } = await import('@supabase/supabase-js')
-              const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
               await supabase.auth.signOut()
               window.location.href = '/'
             }}
@@ -59,13 +57,11 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Greeting */}
       <div style={{ padding: '20px 16px 0', display: 'flex', alignItems: 'center', gap: 8 }}>
         <span style={{ fontSize: 28 }}>👋</span>
         <span style={{ fontSize: 22, fontWeight: 900, color: '#000' }}>Hi {user.email?.split('@')[0]}</span>
       </div>
 
-      {/* Exam Date Card */}
       <div style={{ margin: '16px 16px 12px', background: 'linear-gradient(135deg, #F5C300 0%, #FFE066 100%)', borderRadius: 24, padding: '24px 20px', position: 'relative', minHeight: 120, boxShadow: '0 4px 16px rgba(245,195,0,0.3)' }}>
         <div style={{ fontSize: 36, marginBottom: 8 }}>📅</div>
         {examDate ? (
@@ -77,21 +73,15 @@ export default function Dashboard() {
             + Set Exam Date →
           </div>
         )}
- {editDate && (
+        {editDate && (
           <div style={{ marginTop: 10, display: 'flex', gap: 8 }}>
-            <input
-              type="date"
-              value={examDate}
-              onChange={e => setExamDate(e.target.value)}
-              style={{ padding: '10px', borderRadius: 10, border: 'none', fontSize: 15, flex: 1, fontWeight: 600 }}
-            />
+            <input type="date" value={examDate} onChange={e => setExamDate(e.target.value)} style={{ padding: '10px', borderRadius: 10, border: 'none', fontSize: 15, flex: 1, fontWeight: 600 }} />
             <button onClick={() => setEditDate(false)} style={{ padding: '10px 18px', background: '#000', color: '#F5C300', border: 'none', borderRadius: 10, fontWeight: 800, cursor: 'pointer' }}>✓</button>
-          </div>
+ </div>
         )}
         <button onClick={() => setEditDate(true)} style={{ position: 'absolute', right: 16, bottom: 16, width: 42, height: 42, background: 'rgba(0,0,0,0.12)', borderRadius: '50%', border: 'none', fontSize: 18, cursor: 'pointer' }}>✏️</button>
       </div>
 
-      {/* My Goal Score */}
       <div style={{ margin: '0 16px 12px', background: '#fff', borderRadius: 24, padding: '20px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: 13, color: '#999', fontWeight: 600, marginBottom: 6 }}>My Goal Score</div>
@@ -115,23 +105,17 @@ export default function Dashboard() {
           )}
           <div style={{ fontSize: 12, color: '#999', marginTop: 6, fontWeight: 600 }}>{scoreType}</div>
         </div>
-        <img
-          src="https://raw.githubusercontent.com/Murod907/maris-academy/refs/heads/main/polarpolar.jpg"
-          alt="bear"
-          style={{ width: 130, height: 130, objectFit: 'contain' }}
-        />
+        <img src="https://raw.githubusercontent.com/Murod907/maris-academy/refs/heads/main/polarpolar.jpg" alt="bear" style={{ width: 130, height: 130, objectFit: 'contain' }} />
       </div>
 
-      {/* Competitions */}
       <div style={{ margin: '0 16px 12px', background: '#fff', borderRadius: 24, padding: '20px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => window.location.href = '/assessment'}>
- <div>
+        <div>
           <div style={{ fontSize: 16, fontWeight: 800 }}>Competitions</div>
           <div style={{ fontSize: 13, color: '#999', marginTop: 4 }}>Musobaqalarga kirish →</div>
         </div>
         <span style={{ fontSize: 56 }}>🏆</span>
       </div>
 
-      {/* Roadmap */}
       <div style={{ margin: '0 16px 12px', background: '#fff', borderRadius: 24, padding: '20px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => window.location.href = '/roadmap'}>
         <div>
           <div style={{ fontSize: 16, fontWeight: 800 }}>Roadmap</div>
@@ -139,9 +123,7 @@ export default function Dashboard() {
         </div>
         <span style={{ fontSize: 56 }}>🗺️</span>
       </div>
-
-      {/* Bottom Nav */}
-      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: '#fff', borderTop: '1px solid #f0f0f0', display: 'flex', padding: '10px 0' }}>
+ <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: '#fff', borderTop: '1px solid #f0f0f0', display: 'flex', padding: '10px 0' }}>
         {[
           { icon: '⊞', label: 'Home', href: '/dashboard', active: true },
           { icon: '📋', label: 'Assessment', href: '/assessment', active: false },
