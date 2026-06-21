@@ -1,11 +1,5 @@
 'use client'
-import { useState } from 'react'
-import { createClient } from '@supabase/supabase-js'
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+import { useState, useEffect } from 'react'
 
 export default function Home() {
   const [email, setEmail] = useState('')
@@ -17,11 +11,20 @@ export default function Home() {
   const handleLogin = async () => {
     setLoading(true)
     setError('')
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
-    if (error) {
-      setError('Email yoki parol noto\'g\'ri!')
-    } else {
-      window.location.href = '/dashboard'
+    try {
+      const { createClient } = await import('@supabase/supabase-js')
+      const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      )
+      const { error } = await supabase.auth.signInWithPassword({ email, password })
+      if (error) {
+        setError('Email yoki parol noto\'g\'ri!')
+      } else {
+        window.location.href = '/dashboard'
+      }
+    } catch (e) {
+      setError('Xato yuz berdi!')
     }
     setLoading(false)
   }
@@ -33,6 +36,7 @@ export default function Home() {
           width: 70, height: 70, background: '#000', borderRadius: '50%',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           margin: '0 auto 12px', fontSize: 32, fontWeight: 900, color: '#FFF176',
+          fontStyle: 'italic',
         }}>M</div>
         <div style={{ fontSize: 28, fontWeight: 900, color: '#000', letterSpacing: 3 }}>MARIS</div>
         <div style={{ fontSize: 13, fontWeight: 600, color: '#000', letterSpacing: 4, opacity: 0.7 }}>ACADEMY</div>
@@ -48,11 +52,7 @@ export default function Home() {
             placeholder="Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            style={{
-              width: '100%', padding: '16px', borderRadius: 14,
-              border: '2px solid #F0F0F0', fontSize: 15,
-              boxSizing: 'border-box', outline: 'none', background: '#F9F9F9',
-            }}
+            style={{ width: '100%', padding: '16px', borderRadius: 14, border: '2px solid #F0F0F0', fontSize: 15, boxSizing: 'border-box', outline: 'none', background: '#F9F9F9' }}
           />
         </div>
 
@@ -64,20 +64,11 @@ export default function Home() {
               placeholder="Parol"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              style={{
-                width: '100%', padding: '16px', borderRadius: 14,
-                border: '2px solid #F0F0F0', fontSize: 15,
-                boxSizing: 'border-box', outline: 'none', background: '#F9F9F9',
-              }}
+              style={{ width: '100%', padding: '16px', borderRadius: 14, border: '2px solid #F0F0F0', fontSize: 15, boxSizing: 'border-box', outline: 'none', background: '#F9F9F9' }}
             />
-            <button
-              onClick={() => setShowPassword(!showPassword)}
-              style={{
-                position: 'absolute', right: 16, top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'none', border: 'none', fontSize: 18, cursor: 'pointer', color: '#999',
-              }}
-            >{showPassword ? '👁️' : '🙈'}</button>
+            <button onClick={() => setShowPassword(!showPassword)} style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', fontSize: 18, cursor: 'pointer', color: '#999' }}>
+              {showPassword ? '👁️' : '🙈'}
+            </button>
           </div>
         </div>
 
@@ -86,15 +77,12 @@ export default function Home() {
         <button
           onClick={handleLogin}
           disabled={loading}
-          style={{
-            width: '100%', padding: '16px',
-            background: loading ? '#999' : '#000',
-            color: '#FFF176', border: 'none', borderRadius: 50,
-            fontSize: 16, fontWeight: 800, cursor: 'pointer', letterSpacing: 1,
-          }}
+          style={{ width: '100%', padding: '16px', background: loading ? '#999' : '#000', color: '#FFF176', border: 'none', borderRadius: 50, fontSize: 16, fontWeight: 800, cursor: 'pointer', letterSpacing: 1 }}
         >
           {loading ? 'Kirilmoqda...' : 'KIRISH'}
-        </button><p style={{ textAlign: 'center', color: '#999', fontSize: 12, marginTop: 24 }}>
+        </button>
+
+        <p style={{ textAlign: 'center', color: '#999', fontSize: 12, marginTop: 24 }}>
           IELTS tayyorgarligi platformasi
         </p>
       </div>
