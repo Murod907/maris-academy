@@ -1,5 +1,11 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  'https://vzfogwsijmxzdaupzkfb.supabase.co',
+  'sb_publishable_uOTGX4QdfpOUtdalDef-pQ_BO1ThYxs'
+)
 
 export default function Home() {
   const [email, setEmail] = useState('')
@@ -11,20 +17,11 @@ export default function Home() {
   const handleLogin = async () => {
     setLoading(true)
     setError('')
-    try {
-      const { createClient } = await import('@supabase/supabase-js')
-      const supabase = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-      )
-      const { error } = await supabase.auth.signInWithPassword({ email, password })
-      if (error) {
-        setError('Email yoki parol noto\'g\'ri!')
-      } else {
-        window.location.href = '/dashboard'
-      }
-    } catch (e) {
-      setError('Xato yuz berdi!')
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) {
+      setError('Email yoki parol noto\'g\'ri!')
+    } else {
+      window.location.href = '/dashboard'
     }
     setLoading(false)
   }
