@@ -38,21 +38,11 @@ export default function Dashboard() {
 
       {/* Header */}
       <div style={{ background: '#fff', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{
-            width: 42, height: 42,
-            background: '#F5C300',
-            borderRadius: 10,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontWeight: 900, fontSize: 24, color: '#000',
-            fontStyle: 'italic',
-            boxShadow: '2px 2px 0px #000',
-          }}>M</div>
-          <div>
-            <div style={{ fontWeight: 900, fontSize: 18, letterSpacing: 3, color: '#000', lineHeight: 1 }}>MARIS</div>
-            <div style={{ fontWeight: 700, fontSize: 9, letterSpacing: 4, color: '#F5C300', textTransform: 'uppercase' }}>Academy</div>
-          </div>
-        </div>
+        <img
+          src="https://raw.githubusercontent.com/Murod907/maris-academy/refs/heads/main/marismaris.jpg"
+          alt="Maris Academy"
+          style={{ height: 40, objectFit: 'contain' }}
+        />
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           <span style={{ fontSize: 22, cursor: 'pointer' }}>🔔</span>
           <span style={{ fontSize: 22, cursor: 'pointer' }}>🌙</span>
@@ -85,7 +75,7 @@ export default function Dashboard() {
           <div style={{ marginTop: 10, display: 'flex', gap: 8 }}>
             <input
               type="date"
-value={examDate}
+              value={examDate}
               onChange={e => setExamDate(e.target.value)}
               style={{ padding: '10px', borderRadius: 10, border: 'none', fontSize: 15, flex: 1, fontWeight: 600 }}
             />
@@ -94,15 +84,14 @@ value={examDate}
         )}
         <button
           onClick={() => setEditDate(true)}
-          style={{ position: 'absolute', right: 16, bottom: 16, width: 42, height: 42, background: 'rgba(0,0,0,0.12)', borderRadius: '50%', border: 'none', fontSize: 18, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          style={{ position: 'absolute', right: 16, bottom: 16, width: 42, height: 42, background: 'rgba(0,0,0,0.12)', borderRadius: '50%', border: 'none', fontSize: 18, cursor: 'pointer' }}
         >✏️</button>
       </div>
-
-      {/* My Goal Score */}
+ {/* My Goal Score */}
       <div style={{ margin: '0 16px 12px', background: '#fff', borderRadius: 24, padding: '20px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: 13, color: '#999', fontWeight: 600, marginBottom: 6 }}>My Goal Score</div>
-          <button onClick={() => setEditScore(true)} style={{ width: 34, height: 34, background: '#f0f0f0', borderRadius: '50%', border: 'none', fontSize: 15, cursor: 'pointer', marginBottom: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✏️</button>
+          <button onClick={() => setEditScore(true)} style={{ width: 34, height: 34, background: '#f0f0f0', borderRadius: '50%', border: 'none', fontSize: 15, cursor: 'pointer', marginBottom: 8 }}>✏️</button>
           {editScore ? (
             <div>
               <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
@@ -128,26 +117,11 @@ value={examDate}
           )}
           <div style={{ fontSize: 12, color: '#999', marginTop: 6, fontWeight: 600 }}>{scoreType}</div>
         </div>
-        {/* SVG Polar Bear */}
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="60" cy="95" rx="28" ry="18" fill="#e8e8e8"/>
-          <ellipse cx="60" cy="75" rx="26" ry="28" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
-<ellipse cx="38" cy="58" rx="10" ry="12" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
-          <ellipse cx="82" cy="58" rx="10" ry="12" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
-          <ellipse cx="60" cy="52" rx="20" ry="22" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
-          <ellipse cx="50" cy="42" rx="10" ry="10" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
-          <ellipse cx="70" cy="42" rx="10" ry="10" fill="#fff" stroke="#e0e0e0" strokeWidth="1"/>
-          <ellipse cx="60" cy="58" rx="10" ry="8" fill="#f0f0f0"/>
-          <ellipse cx="55" cy="50" rx="3" ry="3" fill="#222"/>
-          <ellipse cx="65" cy="50" rx="3" ry="3" fill="#222"/>
-          <ellipse cx="60" cy="56" rx="4" ry="3" fill="#d4a0a0"/>
-          <path d="M55 60 Q60 64 65 60" stroke="#333" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
-          <ellipse cx="38" cy="92" rx="10" ry="6" fill="#e8e8e8"/>
-          <ellipse cx="82" cy="92" rx="10" ry="6" fill="#e8e8e8"/>
-          {/* Yellow shirt */}
-          <ellipse cx="60" cy="88" rx="20" ry="12" fill="#F5C300"/>
-          <rect x="42" y="80" width="36" height="16" rx="8" fill="#F5C300"/>
-        </svg>
+        <img
+          src="https://raw.githubusercontent.com/Murod907/maris-academy/refs/heads/main/polarpolar.jpg"
+          alt="bear"
+          style={{ width: 130, height: 130, objectFit: 'contain' }}
+        />
       </div>
 
       {/* Competitions */}
@@ -167,8 +141,7 @@ value={examDate}
         </div>
         <span style={{ fontSize: 56 }}>🗺️</span>
       </div>
-
-      {/* Bottom Nav */}
+ {/* Bottom Nav */}
       <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: '#fff', borderTop: '1px solid #f0f0f0', display: 'flex', padding: '10px 0' }}>
         {[
           { icon: '⊞', label: 'Home', href: '/dashboard', active: true },
